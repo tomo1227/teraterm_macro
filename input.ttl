@@ -1,0 +1,29 @@
+;=====================================================================
+; 接続情報
+HOSTPORT = '22'
+USERNAME = 'root'
+KEYFILE  = 'C:\Users\***\.ssh\id_rsa'
+;=====================================================================
+​
+; コマンドオプション組立て
+​
+inputbox 'Please input an IP address or the host name.' 'Host information input' 
+HOSTADDR = inputstr 
+strlen HOSTADDR 
+if result =0 then 
+    messagebox 'Host information is not input.' 'Input error' 
+    end 
+endif
+​
+COMMAND = HOSTADDR
+strconcat COMMAND ':'
+strconcat COMMAND HOSTPORT
+strconcat COMMAND ' /ssh /2 /auth=publickey /user='
+strconcat COMMAND USERNAME
+strconcat COMMAND ' /keyfile='
+strconcat COMMAND KEYFILE
+​
+; 接続
+connect COMMAND
+​
+end

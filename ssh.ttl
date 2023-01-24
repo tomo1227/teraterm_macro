@@ -1,0 +1,20 @@
+;=====================================================================
+; 接続情報
+HOSTPORT = '22'
+USERNAME = 'root'
+KEYFILE  = 'C:\Users\****\.ssh\id_rsa'
+HOSTADDR = "***.***.***.***"
+;=====================================================================
+​
+COMMAND = HOSTADDR
+strconcat COMMAND ':'
+strconcat COMMAND HOSTPORT
+strconcat COMMAND ' /ssh /2 /auth=publickey /user='
+strconcat COMMAND USERNAME
+strconcat COMMAND ' /keyfile='
+strconcat COMMAND KEYFILE
+​
+; 接続
+connect COMMAND
+​
+end
